@@ -1,0 +1,22 @@
+  <main ng-controller="itemCtrl">
+    <div class="item-detail">
+      <img src="{{product.productImage}}" alt="{{product.productImage}} picture">
+      <aside>
+        <h3>{{product.productName}}</h3>
+        <div><span>{{product.productSize}}</span><br><span>${{product.productPrice}}</span></div>
+        <p>{{product.productDescription}}</p>
+        <div class="quantity-buttun">
+          <div class="quantity">
+            <select ng-model="selectQuantity">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button class="add-cart-btn" ng-click="btnAddProduct(product, selectQuantity)">Add to Cart</button>
+        </div>
+      </aside>
+    </div>
+  </main>

@@ -1,0 +1,37 @@
+  <div class="hero-sake">
+    <div class="wrap">
+      <h2>SAKE</h2>
+        <div class="search">
+          <input type="text" class="searchTerm" placeholder="What are you looking for?" ng-model="nameSearch">
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+  </div>
+
+  <main ng-controller="sakes">
+    <h2>Our Product</h2>
+    <div class="items-wrap">
+      <div class="item" ng-repeat="sake in productsArray | filter:nameSearch | limitTo :elementsPerPage:actualPage">
+        <div class="item-pic" style="background-image: url('{{sake.product.productImage}}');"></div>
+        <a href="#!item?productID={{sake.product.productID}}&category={{sake.category}}"></a>
+        <aside>
+          <h3>{{sake.product.productName}}</h3>
+          <div><span>{{sake.product.productSize}}</span></div>
+          <div><span>${{sake.product.productPrice}}</span></div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- PAGER -->
+    <div class="pager">
+      <ul class="pagination">
+        <li class="pre"><button id="back" ng-click="btnClick($event)"><span>«</span></button></li>
+        <li ng-repeat="number in paginationNumber | limitTo:10:pagItem">
+          <button class="btn-pag" data-position="{{$index}}" ng-click="btnClick($event, number)" ng-class="{ active: number == 1 }">{{number}}</button>
+        </li>
+        <li class="next"><button id="next" ng-click="btnClick($event)"><span>»</span></button></li>
+      </ul>
+    </div>
+  </main>

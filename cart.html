@@ -1,0 +1,35 @@
+ <main ng-controller="cartCtrl">
+    <h2>Your cart</h2>
+    <div class="cart-wrap">
+    <div class="cart-summary" ng-repeat="product in products">
+        <div class="cart-item-detail-pic" style="background-image: url('{{product.id.productImage}}');"></div>
+        <h3>{{product.id.productName}}</h3>
+          <span>{{product.id.productSize}}</span>
+          <span class="cart-item-price">${{product.id.productPrice}}</span>
+          <div class="quantity">
+              <div class="quantityModi">
+                <button class="plus-btn" type="button" name="button" ng-click="btnAddProduct(product, 1)">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <span>{{product.product}}</span>
+                <button class="minus-btn" type="button" name="button" ng-click="btnAddProduct(product, -1)">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>
+            <!-- <select>
+              <option value="0">Quantity</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select> -->
+          </div>    
+    </div>
+
+    <div class="total">
+    <h3>Total: <span>${{shopingCart.getTotalPrice()}}</span></h3>
+    <button ng-show="older" class="checkout-btn" ng-click="btnCheckout($event)">Checkout</button>
+    </div>
+  </div>
+  </main>

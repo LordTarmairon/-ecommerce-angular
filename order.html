@@ -1,0 +1,45 @@
+<main ng-controller="orderCtrl">
+  <div class="confirm-order-wrap">
+    <div class="checkout-summary">
+      <div class="user-infomation">
+        <table>
+          <thead>
+          <th class="yourInfo" colspan="4">Your information</th>
+          </thead>
+          <tr>
+            <td>Your Name</td>
+            <td colspan="3">{{fullName}}</td>
+          </tr>
+          <tr>
+            <td>Shipping Address</td>
+            <td colspan="3">{{address}}</td>
+          </tr>
+          <tr>
+            <td>Payment</td>
+            <td>{{credit}}</td>
+            <td>{{expi}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <h2>Your Order</h2>
+      <div class="checkout-item" ng-repeat="product in products">
+        <div class="order-item-detail-pic" style="background-image: url('{{product.id.productImage}}');"></div>
+        <h3>{{product.id.productName}}</h3>
+        <span>{{product.id.productSize}}</span>
+        <span class="cart-item-price">${{product.id.productPrice}}</span>
+        <span>Qty: {{product.product}}</span>
+      </div>
+    </div>
+    <div class="confirm-order">
+      <div>
+        <p>Sub total: ${{shopingCart.getTotalPrice()}}</p>
+        <p>Tax: {{tax}}%</p>
+        <p>Shipping: ${{shipping}}</p>
+        <h3>Total: <span>${{realPrice}}</span></h3>
+      </div>
+      <button class="confirm-btn" ng-click="btnOrderComplete()">Checkout</button>
+    </div>
+  </div>
+  <a class="back" href="#!cart"><span>« Back to Cart</span></a>
+</main>
